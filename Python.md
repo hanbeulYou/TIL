@@ -1,6 +1,4 @@
-# TIL (Today I Learned)
-
-## Python
+# Python
 
 - 기초 문법
     - 코드 스타일 가이드
@@ -33,6 +31,7 @@
         - 산술연산자 : 기본적인 사칙연산 및 수식 계산
         +, -, *, /, //, **
         - 연산자 우선순위 : 수학에서의 우선순위와 같음
+        
 - 자료형
     - Numeric Type
         - int : 정수, integer
@@ -84,6 +83,7 @@
         - 결과가 확실한 경우 두번째 값은 확인하지 않고 첫번째 값 반환
         - and 연산에서 첫 번째 값이 False → 첫 번째 값 반환
         - or 연산에서 첫 번째 값이 True → 첫 번째 값 반환
+        
 - 컨테이너
     
     여러개의 값 (데이터)를 담을 수 있는 것(객체)으로, 서로 다른 자료형을 저장할 수 있음
@@ -156,6 +156,7 @@
         - int : str(형식에 맞는), float → int
         - float : str(형식에 맞는), int → float
         - str : int, float, list, tuple, dict → str
+        
 - 파이썬 프로그램 구성 단위
     - 식별자 (Identifier)
         - 변수, 함수, 클래스 등 프로그램이 실행되는 동안 다양한 값을 가질 수 있는 이름
@@ -178,3 +179,285 @@
         - 모듈 : 다른 프로그램에서 불러와 사용하기 위한 것
     - 라이브러리 (Library)
         - 패키지 모음
+    
+- 제어문
+    - 조건문 : 조건문은 참/거짓을 판단할 수 있는 조건식과 함께 사용
+        - 조건이 참인 경우 이후 들여쓰기 되어있는 코드 블록을 실행
+        if 조건 == True :
+            # Run this Code block
+        - 이외의 경우 else 이후 들여쓰기 되어있는 코드 블록을 실행
+        else : 
+            # Run this Code block
+        - 콜론 (:) 빼먹지 말기
+        - 복수 조건문 : 복수의 조건식을 활용할 경우 elif를 활용하여 표현
+        - 중첩 조건문 : 다른 조건문에 중첩되어 사용될 수 있음
+        - 들여쓰기에 유의
+    - 조건 표현식 (Conditional Expression)
+        - 조건 표현식을 일반적으로 조건에 따라 값을 정할 때 활용
+        - 삼항 연산자(Ternary Opeator)로 부르기도 함
+        - true인 경우 값 if 조건 else false인 경우 값
+    - 반복문 : 특정 조건을 만족할 때까지 같은 동작을 계속 반복
+        - while 문 : 종료 조건에 해당하는 코드를 통해 반복문을 종료
+        - 조건이 참인 경우 들여쓰기 되어있는 코드 블록이 실행
+        - 코드 블록이 모두 실행되고, 다시 조건식을 검사하며 반복적으로 실행
+        - 무한 루프를 하지 않도록 종료 조건이 반드시 필요
+        - 복합  연산자 (In-Place Operator) : 연산과 할당을 합쳐 놓음. ex : +=
+        - for 문 : 반복 가능한 객체를 모두 순회하면 종료 (별도의 종료 조건 X)
+        - 시퀀스(string, tuple, list, range)를 포함한 순회 가능한 객체(iterable)의 요소를 모두 순회
+        - 별도의 종료 조건 필요 
+        - Iterable : 순회할 수 있는 자료형(string, list, dict, tuple, range, set 등) 및 순회형 함수(range, enumerate)
+        - dictionary 순회  : 기본적으로 key를 순회, key를 통해 값을 활용
+        - 추가 메서드를 활용한 dictionary 순회 : keys(), values(). items()
+        - items() : (key, value)의 튜플로 구성된 결과
+        - enmuerate 순회 : 인덱스와 객체를 쌍으로 담은 열거형(enumerate) 객체 반환
+        - (index, value) 형태의 tuple로 구성된 열거 객체를 반환
+        - List Comprehension : 표현식과 제어문을 통해 특정한 값을 가진 리스트를 간결하게 생성
+        - [code for 변수 in iterable]
+        - [code for 변수 in iterable if 조건식]
+        - Dictionary Comprehension
+        - {key : value for 변수 in iterable}
+        - {key : value for 변수 in iterable if 조건식}
+        - 반복 제어 : break, continue, for-else
+        - break : 반복문 종료
+        - continue : continue 이후 코드 블록을 수행하지 않고, 다음 반복을 수행
+        - for-else : 끝까지 반복문을 실행한 이후에 else 문 실행 (break를 통해 중간에 종료되는 경우 else문은 실행 X)
+        - pass : 아무것도 하지 않음
+        
+- 함수
+    - 함수를 사용하는 이유
+        - 분해 (Decomposition) : 기능을 분해하고 재사용 가능하게 만듦
+        - 추상화 (Abstraction) : 복잡한 내용을 모르더라도 사용할 수 있도록 만듦
+    - 함수의 종류
+        - 내장 함수 : 파이썬에 기본적으로 포함된 함수
+        - 외장 함수 : import 문을 통해 사용, 외부 라이브러리에서 제공
+        - 사용자 정의 함수
+    - 함수의 정의
+        - 특정한 기능을 하는 코드의 조각(묶음)
+        - 특정 코드를 매번 다시 작성하지 않고, 필요시에만 호출하여 간편히 사용
+    - 함수 기본 구조
+        
+        ```python
+        def func_name(parameters) :
+        	#Docstring
+        	function body
+        	return
+        ```
+        
+        - 선언과 호출  (Define & Call)
+        - def 키워드 활용
+        - 들여쓰기를 통해 Function Body (실행될 코드 블록) 작성
+        - parameter를 넘겨줄 수 있음
+        - 함수는 동작 후에 return을 통해 결괏값을 전달함
+        - 입력 (Input)
+        - 문서화 (Docstring)
+        - 범위(Scope)
+    - 함수의 결과값
+        - 값에 따른 함수의 종류
+        - Void function : 명시적인 return 값이 없는 경우, None을 반환하고 종료
+        - Value returnging function : 함수 실행 후 return 문을 통해 값 반환 (반환 후 함수 바로 종료)
+        - 튜플(혹은 리스트와 같은 컨테이너)을 활용하여 두 개 이상의 값 반환
+    - 함수의 입력
+        - Parameter : 함수를 정의할 때, 함수 내부에서 사용되는 변수
+        - Argument : 함수를 호출할 때, 넣어주는 값
+        - 필수 Argument : 반드시 전달되어야 하는 argument (없으면 에러)
+        - 선택 Argument : 값을 전달하지 않아도 되는 경우 기본값이 전달
+        - Positional Arguments : 기본적으로 함수 호출 시 Argument는 위치에 따라 함수 내에 전달됨
+        - Keyword Arguments : 직접 변수의 이름으로 특정 Argument를 전달할 수 있음
+        - Keyword Argument 다음에 Postional Argument를 활용할 수 없음
+        
+        ```python
+        def add (x, y) :
+        	return x + y
+        
+        add (x = 2, y = 5)
+        # add (2, y = 5)는 가능
+        # add (x = 2, 5)는 불가능
+        ```
+        
+        - Default Arguments Values : 기본값을 지정하여 함수 호출 시 argument 값을 설정하지 않도록 함
+        
+        ```python
+        def add (x, y = 0) :
+        	return x + y
+        
+        add (2)
+        ```
+        
+        - 정해지지 않은 여러 개의 Arguments 처리
+        - Asterisk 혹은 언패킹 연산자라고 불리는 * 덕분
+        - 가변 인자(*args) : 여러 개의 Positional Argument를 하나의 필수 parameter로 받아서 사용
+        
+        ```python
+        def add (*args) :
+        	for arg in args :
+        		print(arg)
+        ```
+        
+        - 패킹 / 언패킹
+        - 패킹 : 여러 개의 데이터를 묶어서 변수에 할당
+        - 언패킹 : 시퀀스 속의 요소들을 여러 개의 변수에 나누어 할당
+        - 언패킹시 변수의 개수와 할당하고자 하는 요소의 개수가 동일해야함
+        - 언패킹시 왼쪽의 변수에 asterisk를 붙이면, 할당하고 남은 요소를 리스트에 담을 수 있음
+        
+        ```python
+        numbers = (1, 2, 3, 4, 5)
+        a, b, *rest = numbers
+        print(a, b, rest) # 1 2 [3, 4, 5]
+        
+        a, *rest, b = numbers
+        print(a, rest, b) # 1 [2, 3, 4] 5
+        ```
+        
+        - 가변 키워드 인자(**kwargs)
+        - 몇 개의 키워드 인자를 받을지 모르는 함수를 정의할 때 유용
+        - 딕셔너리로 묶여 처리되며, parameter에 **를 붙여 표현
+        
+- 범위 (Scope)
+    
+    함수는 코드 내부에 local scope를 생성하며, 그 외의 공간인 global scope로 구분
+    
+    - Scope
+        - Global Scope : 코드 어디에서든 참조할 수 있는 공간
+        - Local Scope : 함수가 만든 Scope. 함수 내부에서만 참조 가능
+    - Variable
+        - Global Variable : Global Scope에 정의된 변수
+        - Local Variable : Local Scope에 정의된 변수
+    - 변수 수명 주기 (Lifecycle)
+        - built-in scope : 파이썬이 실행된 이후부터 영원히 유지
+        - global scope : 모듈이 호출된 시점 이후 혹은 인터프리터가 끝날 때까지 유지
+        - local scope : 함수가 호출될 때 생성되고, 함수가 종료될 때까지 유지
+    - 이름 검색 규칙 (Name Resolution)
+        - 파이썬에서 사용되는 이름(식별자)들은 이름공간(namespace)에 저장되어 있음
+        - 아래와 같은 순서로 이름을 찾아나가며, LEGB Rule 이라고 부름
+        - Local Scope : 지역 범위 (현재 작업 중인 범위)
+        - Enclosed Scope : 지역 범위 한 단계 위 범위
+        - Global Scope : 최상단에 위치한 범위
+        - Built-in Scope : 모든 것을 담고 있는 범위
+        - 함수 내에서는 바깥 Scope의 변수에 접근 가능하나, 수정은 할 수 없음
+    - global 문
+        - 현재 코드 블록 전체에 적용되며, 나열된 식별자(이름)이 global variable임을 나타냄
+        - global에 나열된 이름은 같은 코드 블록에서 global 앞에 등장할 수 없음
+        - global에 나열된 이름은 parameter, for 루프 대상, 클래스/함수 정의 등으로 정의되지 않아야 함
+    - nonlocal
+        - global을 제외하고 가장 가까운 scope의 변수를 연결하도록 함
+        - nonlocal에 나열된 같은 코드 블록에서 nonlocal 앞에 등장할 수 없음
+        - nonlocall에 나열된 이름은 parameter, for 루프 대상, 클래스/함수 정의 등으로 정의되지 않아야 함
+        - global과는 달리 이미 존재하는 이름과의 연결만 가능함
+    - 함수의 범위 주의
+        - 기본적으로 함수에서 선언된 변수는 Local scope에 생성되며, 함수 종료 시 사라짐
+        - 해당 scope에 변수가 없는 경우 LEGB rule에 의해 이름을 검색
+        - 변수에 접근은 가능하지만, 해당 변수를 수정할 수는 없음
+        - 값을 할당하는 경우 해당 scope의 이름 공간에 새롭게 생성되기 때문
+        - 단, 함수 내에서 필요한 상위 scope 변수는 argument로 넘겨서 활용
+        - 상위 scope에 있는 변수를 수정하고 싶다면 global, nonlocal 키워드 활용
+        - 가급적 사용 X, 함수로 값을 바꾸려면 argument로 return 값을 사용
+        
+- 함수의 응용
+    - 내장 함수(Built-in Functions) : 파이썬 인터프리터에는 항상 사용할 수 있는 많은 함수와 형(type)이 내장되어 있음
+    - map(function, iterable) 함수
+        - 순회 가능한 데이터 구조(iterable)의 모든 요소에 함수(function) 적용하고 그 결과를 map object로 반환
+    - filter(function, iterable) 함수
+        - 순회 가능한 데이터 구조(iterable)의 모든 요소에 함수(function) 적용하고 그 결과가 True인 것들을 filter object로 반환
+    - zip(*iterables) 함수
+        - 복수의 iterable을 모아 튜플을 원소로 하는 zip object 반환
+    - lambda 함수
+        
+        ```python
+        # by def
+        def triangle_area(b, h) :
+        	return 0.5 * b * h
+        
+        # by lambda
+        triangle_area = lambda b, h : 0.5 * b * h
+        ```
+        
+    - 재귀 함수(recursive function)
+        - 자기 자신을 호출하는 함수
+        - 1개 이상의 base case(종료되는 상황)가 존재하고, 수렴하도록 작성
+        - 주의 사항
+        - 메모리 스택이 넘치게 되면(stack overflow) 프로그램이 동작하지 않게 도
+        - 파이썬에서는 최대 재귀 깊이(maximum recursion depth)가 1,000번이므로, 호출 횟수가 이를 넘어가게 되면 recursion error 발생
+        - 
+        
+- 모듈과 패키지
+    
+    다양한 기능을 하나의 파일로 → 모듈 (modul)
+    
+    다양한 파일을 하나의 폴더로 → 패키지 (package)
+    
+    다양한 패키지를 하나의 묶음으로 → 라이브러리 (library)
+    
+    이것을 관리하는 관리자 → pip
+    
+    패키지 활용 공간 : 가상환경
+    
+    - 모듈
+        - 특정 기능을 하는 코드를 파이썬 파일(.py) 단위로 작성한 것
+        ex : math.py
+    - 패키지
+        - 특정 기능과 관련된 여러 모듈의 집합
+        - 패키지 안에는 또 다른 서브 패키지를 포함
+    - 모듈과 패키지 불러오기
+        
+        ```python
+        import module
+        from module import var, function
+        from module import *
+        
+        from package import module
+        from package.module import var, function
+        ```
+        
+    - 파이썬 패키지 관리자(pip)
+        - PyPI(Python Package Index)에 저장된 외부 패키지들을 설치하도록 도와주는 패키지 관리 시스템
+        - 최신 버전 / 특정 버전 / 최소 버전을 명시하여 설치 가능
+        - 이미 설치되어 있는 경우 이미 설치되어 있음을 알리고 아무것도 하지 않음
+        
+        ```bash
+        $ pip install SomePackage
+        $ pip install SomePackage==1.0.5
+        $ pip install 'SomePackage>=1.0.4'
+        ```
+        
+    - 파이썬 패키지 관리자(pip) 명령어
+        - 패키지 삭제
+        
+        ```bash
+        $ pip uninstall SomepPackage
+        ```
+        
+        - 패키지 목록 및 특정 패키지 정보
+        
+        ```bash
+        $ pip list
+        $ pip show SomePackage
+        ```
+        
+        - 패키지 관리하기
+        - 아래의 명령어들을 통해 패키지 목록을 관리하고 설치할 수 있음
+        - 일반적으로 패키지를 기록하는 파일의 이름은 requirements.txt 로 정의함
+        
+        ```bash
+        $ pip freeze > requirements.txt
+        $ pip install -r requirements.txt
+        ```
+        
+    - 사용자 모듈과 패키지
+        - 패키지 만들기
+    - 가상환경
+        - 파이썬 표준 라이브러리가 아닌 외부 패키지와 모듈을 사용하는 경우
+        - 모두 pip을 통해 설치해야 함
+        - 복수의 프로젝트를 하는 경우 버전이 상이할 수 있음
+        - 이러한 경우 가상 환경을 만들어 프로젝트별로 독립적인 패키지를 관리할 수 있음
+        - 가상 환경을 만들고 관리하는데 사용되는 모듈 (Python 버전 3.5부터)
+        - 특정 디렉토리에 가상 환경을 만들고, 고유한 파이썬 패키지 집합을 가질 수 있음
+        - 특정 폴더에 가상 환경(패키지 집합 폴더 등)이 있고
+        - 실행 환경(예 : bash)에서 가상환경을 활성화 시켜
+        - 해당 폴더에 있는 패키지를 관리/사용함
+        - 가상환경 생성
+        
+        ```bash
+        $ python -m venv <폴더명>
+        ```
+        
+        - 가상환경 활성화/비활성화
