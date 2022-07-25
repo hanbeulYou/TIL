@@ -209,7 +209,7 @@
         - dictionary 순회  : 기본적으로 key를 순회, key를 통해 값을 활용
         - 추가 메서드를 활용한 dictionary 순회 : keys(), values(). items()
         - items() : (key, value)의 튜플로 구성된 결과
-        - enmuerate 순회 : 인덱스와 객체를 쌍으로 담은 열거형(enumerate) 객체 반환
+        - enumerate 순회 : 인덱스와 객체를 쌍으로 담은 열거형(enumerate) 객체 반환
         - (index, value) 형태의 tuple로 구성된 열거 객체를 반환
         - List Comprehension : 표현식과 제어문을 통해 특정한 값을 가진 리스트를 간결하게 생성
         - [code for 변수 in iterable]
@@ -377,7 +377,6 @@
         - 주의 사항
         - 메모리 스택이 넘치게 되면(stack overflow) 프로그램이 동작하지 않게 도
         - 파이썬에서는 최대 재귀 깊이(maximum recursion depth)가 1,000번이므로, 호출 횟수가 이를 넘어가게 되면 recursion error 발생
-        - 
         
 - 모듈과 패키지
     
@@ -461,3 +460,118 @@
         ```
         
         - 가상환경 활성화/비활성화
+        
+- 데이터 구조
+    - 데이터 구조 활용
+        - 데이터 구조를 활용하기 위해서는 메서드(method)를 활용
+        - 메서드는 클래스 내부에 정의한 함수, 사실상 함수와 동일
+        - 객체의 기능
+        - data_structuer.method() 형태로 활용
+        - 파이썬 공식 문서의 표기법
+        - str.replace(old, new[,count])
+        - old, new는 필수 / [,count]는 선택적 인자([, ~])
+        
+        ---
+        
+    - 문자열 (String Type)
+        - 문자들의 나열 (sequence of characters)
+        - 모든 문자는 str타입 (변경 불가능한 immutable)
+        - 변수는 주소만 가지고 있음 (pointer 개념)
+        - 문자열을 묶을 때 동일한 문장 부호를 활용(’ ’, “ ”)
+        - 문자열 조회/탐색 및 검증 메서드
+        - str.find(x) : x의 첫 번째 idx 반환, 없으면 -1 반환
+        - str.index(x) : x의 첫 번째 idx 반환, 없으면 오류 발생
+        - str.isalpha() : 알파벳 문자 여부(유니코드 상 letter, 한국어 포함)
+        - str.isupper() : 모두 대문자 여부
+        - str.islower() : 모두 소문자 여부
+        - str.istitle() : 타이틀 형식(첫 번째 대문자) 여부
+        - 문자열 검증 메서드
+        - .isdecimal() ⊆ .isdigit() ⊆ .isnumeric() : 숫자 확인
+        - 문자열 변경 메서드
+        - str.replace(old, new[,count]) : 대상 글자를 새로운 글자로 변경 / count만큼만 시행
+        - str.strip([chars]) : 구분자 제거 (+ lstirp, rstrip 등)
+        - str.split(sep=None, maxsplit=-1) : 구분자 기준으로 분리
+        - ‘separator’.join([iterable]) : 구분자로 iterable을 합치
+        - str.capitalize() : 첫 번째 글자를 대문자로 변경
+        - str.title() : 띄어쓰기 기준으로 각 단어의 첫 글자를 대문자로 변경
+        - str.upper() : 모두 대문자로 변경
+        - str.lower() : 모두 소문자로 변경
+        - str.swapcase() : 대소문자 변경
+    - 리스트
+        - 여러 개의 값을 순서가 있는 구조로 저장
+        - 대괄호 []  혹은 list()를 통해 생성
+        - 순서가 있는 시퀀스로 인덱스를 통해 저장 가능
+        - 리스트 메서드
+        - list.append(x) : 마지막에 x를 추가
+        - list.insert(i, x) : 인덱스 i에 x를 삽입
+        - list.remove(x) : 첫 번째 x를 제거 (항목이 없을 시 value error)
+        - list.pop() : 가장 오른쪽(마지막)의 항목 반환 후 제거
+        - list.pop(i) : 인덱스 i에 있는 항목을 반환 후 제거
+        - list.extend(m) : m이란 리스트를 더함
+        - list.index(x, start, end) : x 찾아 인덱스 반환
+        - list.reverse() : 거꾸로 정렬
+        - list.sort() : 리스트 정렬
+        - list.count(x) : 리스트 내에 x가 몇 개 존재하는지 개수 반환
+    - 튜플
+        - 여러 개의 값을 순서가 있는 구조로 저장 (생성 후 변경 X)
+        - 소괄호 () 형태로 사용
+        - 튜플은 변경할 수 없기 때문에 값에 영향을 미치지 않는 메서드만을 지원
+        - 확장 연산자 → 새로 만듦
+    - 연산자
+        - 멤버십 연산자 
+        - in을 통해 특정 요소가 속해 있는지 확인(True, False return)
+        - not in : 없나요?
+        - 산술 연산자
+        - ‘+’ : 시퀀스 간의 연결/연쇄
+        - 반복 연산자
+        - ‘*’ : 시퀀스를 반복
+        
+        ---
+        
+    - 셋 Set
+        - 중복되는 요소 없이 순서와 상관 없는 데이터 묶음 (인덱스 접근 X)
+        - 담고 있는 요소를 삽입, 변경, 삭제 가능 (mutable)
+        - 셋 메서드
+        - set.copy() : 셋의 얕은 복사본 반환
+        - set.add(x) : x가 없다면 set에 추가
+        - set.pop() : 랜덤하게 항목을 반환하고 해당 항목 제거 (비어있을 경우 KeyError)
+        - set.remove(x) : x를 set에서 삭제 (존재하지 않을 경우 KeyError)
+        - set.discard(x) : 에러 없이 삭제
+        - set.update(t) : t에 있는 모든 항목 중 set에 없는 항목 추가
+        - set.clear() : 모든 항목 제거
+        - set.isdisjoint(t) : 교집합이 없을 경우 True 반환
+        - set.issubset(t) : set이 t의 하위 셋일 경우 True 반환
+        - set.issuperset(t) : set이 t의 상위 셋일 경우 True 반환
+    - 딕셔너리
+        - key-value 쌍으로 이뤄진 자료형 (3.7부터는 ordered)
+        - key는 변경 불가능한 데이터(immutable)만 활용 가능
+        - string, integer, float, boolean, tuple, range
+        - value는 어떠한 형태든 관계 X
+        - 딕셔너리 메서드
+        - d.clear() : 모든 항목을 제거
+        - d.copy() : 얕은 복사본을 반환
+        - d.keys() : 모든 키를 담은 뷰를 반환
+        - d.values() : 모든 값을 담은 뷰를 반환
+        - d.items() : 모든 키-값의 쌍을 담은 뷰를 반환
+        - d.get(k) : 키 k의 값을 반환 (없을 경우 None)
+        - d.get(k, v) : 키 k의 값을 반환 (없을 경우 v)
+        - d.pop(k) : 키 k의 값을 반환하고 항목 삭제 (없을 경우 KeyError)
+        - d.pop(k, v) : 키 k의 값을 반환하고 항목 삭제 (없을 경우 v 반환)
+        - d.update([other]) : d의 값을 매핑하여 업데이트
+        
+        ---
+        
+    - 복사 방법
+        - 할당
+        - 얕은 복사
+        - 깊은 복사
+    - 할당 (Assignment)
+        - 대입 연산자 (=) : 해당 객체에 대한 객체 참조를 복사 
+        (바로가기 복사, 같은 주소를 가리킴)
+    - 얕은 복사 (Shallow copy)
+        - Slice 연산자 활용하여 같은 원소를 가진 리스트지만 연산된 결과를 복사 (다른 주소값)
+        - 주의사항 : 복사하는 리스트의 원소가 주소를 참조하는 경우
+        2차원 리스트일 경우 안의 리스트는 주소를 복사해온 것 (안의 list는 할당)
+    - 깊은 복사 (Deep copy)
+        - 모든 내용이 싹 다 새로운 주소에 저장되어 복사
+        - `import copy` 해서 사용
