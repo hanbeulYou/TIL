@@ -492,8 +492,8 @@
         - str.strip([chars]) : 구분자 제거 (+ lstirp, rstrip 등)
         - str.split(sep=None, maxsplit=-1) : 구분자 기준으로 분리
         - ‘separator’.join([iterable]) : 구분자로 iterable을 합치
-        - str.capitalize() : 첫 번째 글자를 대문자로 변경
-        - str.title() : 띄어쓰기 기준으로 각 단어의 첫 글자를 대문자로 변경
+        - str.capitalize() : 첫 번째 글자를 대문자로 변경 + 나머지는 소문자로
+        - str.title() : 띄어쓰기 기준으로 각 단어의 첫 글자를 대문자로 변경 
         - str.upper() : 모두 대문자로 변경
         - str.lower() : 모두 소문자로 변경
         - str.swapcase() : 대소문자 변경
@@ -528,6 +528,7 @@
         
         ---
         
+    
     - 셋 Set
         - 중복되는 요소 없이 순서와 상관 없는 데이터 묶음 (인덱스 접근 X)
         - 담고 있는 요소를 삽입, 변경, 삭제 가능 (mutable)
@@ -575,3 +576,309 @@
     - 깊은 복사 (Deep copy)
         - 모든 내용이 싹 다 새로운 주소에 저장되어 복사
         - `import copy` 해서 사용
+        - `dest = copy.deepcopy(str)`
+        
+- 객체 지향 프로그래밍 (OOP)
+    - 객체 지향 프로그래밍이란?
+        - 컴퓨터 프로그래밍의 패러다임(방법론) 중 하나
+        - 명령어의 목록으로 보는 시각에서 벗어나 여러 개의 독립된 단위(= 객체)들의 모임으로 파악
+        - 각각의 객체는 메시지를 주고 받고 데이터를 처리할 수 있음(상호작용)
+        - 객체 = 정보(변수) + 행동(함수)
+        - VS 절차 지향 프로그래밍
+        - 중간 과정을 고치면 연달아서 바꿔야 됨
+        - 데이터와 기능을 분리, 추상화된 구조(인터페이스)
+    - 객체 지향의 장점/단점
+        - 장점 : 
+        - 클래스 단위로 모듈화 시켜 개발할 수 있으므로 많은 인원이 참여하는 대규모 소프투웨어 개발에 적합
+        -  필요한 부분만 수정하기 쉽기 때문에 프로그램의 유지보수가 쉬움
+        - 단점 : 
+        - 설계 시 많은 노력과 시간 필요
+        - 실행 속도가 상대적으로 느림
+    
+    ---
+    
+    - OOP 기초
+        - 객체 : 컴퓨터 과학에서 객체 또는 오브젝트(object)는 클래스에서 정의한 것을 토대로 메모리(실제 저장공간)에 할당된 것으로 프로그램에서 사용되는 데이터 또는 식별자에 의해 참조되는 공간을 의미하며, 변수, 자료구조, 함수 또는 메서드가 될 수 있음
+    - 객체 / 인스턴스 / 클래스
+        - 클래스로 만든 객체 = 인스턴스 (객체 ≠ 인스턴스)
+        - 이찬혁은 객체다 (O)
+        - 이찬혁은 인스턴스다 (X)
+        - 이찬혁은 가수(클래스)의 인스턴스다 (O)
+        - 클래스 == 타입
+        - 파이썬은 모든 것이 객체 : 속성과 행동이 존재
+        - 객체.행동()
+        - 객체는 특정 타입의 인스턴스이다.
+        - 123, 500, 0은 모두 int의 인스턴스
+        - ‘hello’, ‘world’는 모두 string의 인스턴스
+        - [123, 4, 56], []은 모두 list의 인스턴스
+        - 객체의 특징
+        - 타입(type) : 어떤 연산자(operator)와 조작(method) 가능한가?
+        - 속성(attribute) : 어떤 상태(data)를 가지는가?
+        - 조작법(method) : 어떤 행위(function)를 할 수 있는가?
+    - 기본 문법
+        - 클래스 정의 `class MyClass :`
+        - 인스턴스 생성 `my_instance = MyClass()`
+        - 메서드 호출 `my_instance.my_method()`
+        - 속성 `my_instance.my_attribute`
+    - 객체 비교하기
+        - == : 동등한, 변수가 참조하는 객체가 동등한 경우 True, 같아 보이지만 실제로 동일한 대상을 가리키고 있다고 확인해 준 것은 아님
+        - is : 동일한, 두 변수가 동일한 객체를 가리키는 경우 True
+    - 속성(데이터, 정보, 상태) → 변수
+        - 특정 데이터 타입/클래스의 객체들이 가지게 될 상태/데이터를 의미
+        - 클래스 변수(같은 클래스는 모두 같은 변수) / 인스턴스 변수(각각의 인스턴스마다 다른 변수)가 존재
+        - 인스턴스 변수
+        - 인스턴스가 개인적으로 가지고 있는 속성(attribute)
+        - 각 인스턴스의 고유한 변수
+        - 생성자 메서드(**init**)에서 `self.<name>` 으로 정의
+        - 인스턴스가 생성된 이후 `<instance>.<name>` 으로 접근 및 할당
+        - 클래스 변수
+        - 클래스 선언 내부에서 정의
+        - `<classname>.<name>` 으로 접근 및 할당
+        - `<instance>.<클래스변수>` 로도 접근 가능 → 이 값을 바꾸면 다른 클래스들도 변한 값을 가짐
+        - 클래스 변수를 변경할 때는 항상 `클래스.클래스변수` 형식으로 변형
+    - 메서드
+        - 특정 데이터 타입 / 클래스의 객체에 공통적으로 적용 가능한 함수
+        - 인스턴스 메서드 → 인스턴스 처리
+        - 인스턴스 변수를 사용하거나 인스턴스 변수에 값을 설정
+        - 클래스 내부에 정의되는 메서드의 기본
+        - 호출시 첫번째 인자로 인스턴스 자기자신(self)이 전달됨(자동) 
+        - `self` : 인스턴스 자기 자신
+        - 매개변수 이름으로 self를 첫 번째 인자로 정의
+        - 파이썬의 암묵적인 규칙(다른 단어로 써도 작동은 함)
+            - 생성자 메서드(Constructor) : 인스턴스 객체가 생성될 때 자동으로 호출되는 메서드  
+            - 인스턴스 변수들의 초기값을 설정
+            - 인스턴스 생성
+            - `__init__` 메서드 자동 호출
+            - 매직 메서드 (Double Underscore, 던더) : 특수한 동작을 위해 만들어진 메서드
+            - 페셜 메서드 혹은 매직 메서드라고 불림
+            - 특정 상황에서 자동으로 불리는 메서드
+            - 소멸자 (Destructor) 메서드 : 인스턴스 객체가 소멸(파괴)되기 직전에 호출되는 메서드
+        - 클래스 메서드 → 클래스 처리
+        - 클래스가 사용할 메서드
+        - `@classmethod` 데코레이터를 사용하여 정의
+        - 호출 시 첫 번째 인자로 클래스(cls)가 전달됨
+        
+        ```python
+        class Person :
+        	count = 0 # 클래스 변수
+        	def __init__(self, name) : # 인스턴스 변수 설정
+        		self.name = name
+        		Person.count += 1
+        
+        	@classmethod
+        	def number_of_population(cls) :
+        		print(f'(인구수는 {cls.count}입니다.')
+        
+        person1 = Person('김김김')
+        person2 = Person('이이이')
+        print(Person.count)
+        ```
+        
+        - 클래스 메서드와 인스턴스 메서드
+        - 클래스 메서드 → 클래스 변수 사용
+        - 인스턴스 메서드 → 인스턴스 변수 사용
+        - 클래스는 인스턴스 변수 사용 X
+        - 인스턴스 메서드는 클래스 변수, 인스턴스 변수 둘 다 사용 O
+        - 정적 메서드 → 나머지..
+        - 스태틱 메서드는 cls, self 사용 X
+        - 인스턴스와 클래스 간의 이름 공간 (namespace)
+        - 클래스를 정의하면 클래스와 해당하는 이름 공간 생성
+        - 인스턴스를 만들면 인스턴스 객체가 생성되고 이름 공간 생성
+        - 인스턴스에서 특정 속성에 접근하면 인스턴스-클래스 순으로 탐색
+        
+        ```python
+        class MyClass :
+        	def method(self) :
+        		return 'instance method', self
+        
+        	@classmethod
+        	def classmethod(cls) :
+        		return 'class method', cls
+        
+        	@staticmethod
+        	def staticmethod() :
+        		return 'static method'
+        ```
+        
+    
+    ---
+    
+    - 객체 지향의 핵심 개념
+    - 추상화 : 현실 세계를 프로그램 설계에 반영
+        - 복잡한 것은 숨기고 필요한 것만 들어내기
+    - 상속 : 두 클래스 사이 부모 - 자식 관계를 정립하는 것
+        - 클래스는 상속이 가능함 (부모의 object를 상속 받음)
+        - `class ChildClass(ParentClass) :`
+        - 하위 클래스는 상위 클래스에 정의된 속성, 행동, 관계 및 제약 조건을 모두 상속 받음
+        - 부모 클래스의 속성, 메서드가 자식 클래스에 상속되므로 코드 재사용성이 높아짐
+        - `isinstance(object, classinfo)` : classinfo의 instance 거나 subclass인 경우 True
+        - `super()` : 자식 클래스에서 부모 클래스를 사용하고 싶은 경우
+        
+        ```python
+        class Person :
+        	def __init__(self, name, age, number, email) :
+        		self.name = name
+        		(...)
+        		self.email = email
+        
+        class Student(Person) :
+        	def __init__(self, name, age, number, email, student_id) :
+        		super().__init__(name, age, number, email)
+        		self.student_id = student_id
+        ```
+        
+        - 메서드 오버라이딩을 통해 자식 클래스에서 재정의 가능
+        - 상속관계에서의 이름 공간은 인스턴스, 자식 클래스, 부모 클래스 순으로 탐색
+        - 다중 상속 : 두 개 이상의 클래스를 상속 받는 경우
+        - 상속 받은 모든 클래스의 요소를 활용 가능
+        - 중복된 속성이나 메서드가 있는 경우 상속 순서에 의해 결정
+        
+        ```python
+        class Person :
+        	def __init__(self, name) :
+        		self.name = name
+        
+        	def greeting(self) :
+        		return f'안녕, {self.name}'
+        
+        class Mom(Person) :
+        	gene = 'XX'
+        
+        	def swin(self) :
+        		return '엄마가 수영'
+        
+        class Dad(Person) :
+        	gene = 'XY' 
+        
+        	def walk(self) :
+        		return '아빠가 걷기'
+        
+        ## 다중 상속 받은 Baby
+        class FirstChild(Dad, Mom) :
+        	def swim(self) :
+        		return '첫째가 수영'
+        	
+        	def cry(self) :
+        		return '첫째가 응애'
+        
+        baby1 = FirstChild('아가')
+        print(baby1.cry()) # 첫째가 응애
+        print(baby1.swim()) # 첫째가 수영
+        print(baby1.walk()) # 아빠가 걷기
+        print(baby1.gene) # XY
+        ```
+        
+        - mro 메서드 (Method Resolution Order) : `FirstChild.mro()`
+        - 해당 인스턴스의 클래스가 어떤 부모 클래스를 가지는지 확인하는 메서드
+        - 기존의 인스턴스 → 클래스 순으로 이름 공간을 탐색하는 과정에서 상속 관계에 있으면 인스턴스 → 자식 클래스 → 부모 클래스로 확장
+    - 다형성 (Polymorphism)
+        - 동일한 메서드가 클래스에 따라 다르게 행동할 수 있음을 의미
+        - 서로 다른 클래스에 속해있는 객체들이 동일한 메시지에 대해 다른 방식으로 응답할 수 있음
+        - 메서드 오버라이딩(overriding) : 상속 받은 메서드를 재정의
+        - class 상속 시 부모 class에서 정의한 메서드를 자식 클래스에서 변경
+        - 이름과 기본 기능은 그대로 사용하지만, 특정 기능을 바꾸고 싶을 때 사용 (자식 class에서 다시 만들면 됨)
+        - 오버로딩 : 같은 이름에 다른 인자 개수(파이썬엔 없음, *args가 있어서)
+    - 캡슐화
+        - 객체의 일부 구현 내용에 대해 외부로부터의 직접적인 액세스를 차단
+        - 파이썬에서 암묵적으로 존재하지만, 언어적으로는 존재하지 않음
+        - 접근제어자 종류 (파이썬 관계 X)
+        - Public Access Modifier
+        - Protected Access Modifier
+        - Private Access Modifier
+        - Public Member
+        - 언더바 없이 시작하는 메서드나 속성
+        - 어디서나 호출 가능, 하위 클래스 override 허용
+        - 일반적으로 작성되는 메서드와 속성 대다수를 차지
+        - Protected Member
+        - 언더바 1개로 시작하는 메서드나 속성
+        - 암묵적 규칙에 의해 부모 클래스 내부와 자식 클래스에서만 호출 가능
+        - 하위 클래스 override 허용
+        - Private Member
+        - 언더바 2개로 시작하는 메서드나 속성
+        - 본 클래스 내부에서만 사용이 가능
+        - 하위 클래스 상속 및 호출 불가능(오류)
+        - 외부 호출 불가능 (오류)
+        - getter 메서드와 setter 메서드 : 변수에 접근할 수 있는 메서드를 별도로 생성
+        - getter 메서드 : 변수의 값을 읽는 메서드 (@property 데코레이터 사용)
+        - setter 메서드 : 변수의 값을 설정하는 성격의 메서드(@변수.setter 사용)
+        
+        ```python
+        Class Person :
+        	def __init__(self, age) :
+        		self._age = age
+        
+        	@property
+        	def age(self) :
+        		return self._age
+        
+        	@age.setter
+        	def age(self, new_age) :
+        		if new_age <= 19 :
+        			raise ValueError('Too Young For Drink')
+        			return
+        
+        		self._age = new_age
+        
+        p1 = Person(20)
+        print(p1.age)
+        
+        p1.age = 33
+        print(p1.age)
+        
+        p1.age = 19 # def age 안의 if문이 실행
+        print(p1.age)
+        ```
+        
+    - 디버깅
+        - 버그 : 소프트웨어에서 발생하는 문제
+        - 1945년 프로그래밍 언어의 일종인 코볼 발명자 그레이스 호퍼가 발견
+        - 컴퓨터 회로에 나방이 들어가 합선을 일으켜 비정상적으로 동작
+        - 디버깅의 정의 : 잘못된 프로그램을 수정하는 것
+        - 에러 메세지가 발생 : 해당 위치를 찾아 메세지 해결
+        - 로직 에러가 발생하는 경우 : 화이팅!
+    - 에러와 예외
+        - 문법 에러(Syntax Error) : 프로그램 실행 X
+        - 파일이름, 줄번호, ^ 문자를 통해 파이썬이 코드를 읽어 나갈 때 문제가 발생한 위치를 표현
+        - EOL (End of Line)
+        - EOF (End of File)
+        - 예외 (Exception) : 실행 도중 예상치 못한 상황을 맞이하면 프로그램 실행 멈춤
+        - 여러 타입으로 나타나고, 타입이 메세지의 일부로 출력됨
+        - NameError, TypeError 등
+        - 모든 내장 예외는 Exception Class를 상속받아 이뤄짐
+        - 사용자 정의 예외를 만들어 관리할 수 있음
+        - 각종 Errors
+        - ZeroDivisonError
+        - NameError (Not defined)
+        - TypeError : 타입 불일치 / Argument 누락 / Argument Type 불일치
+        - ValueError : 타입은 올바르나 값이 적절하지 X
+        - IndexError : 인덱스 존재 X / 범위를 벗어남
+        - KeyError : 해당 키 존재 X
+        - ModuleNotFoundError 
+        - ImportError : Module은 있으나 존재하지 않는 클래스 / 함수를 가져오는 경우
+        - KeboardInterrupt - 임의로 프로그램 종료시
+        - IndentationError : 들여쓰기 적절
+    - 예외 처리
+        
+        try 문(statement) / except 절(clause)을 이용하여 예외 처리 가능
+        
+        - try 문 
+        - 오류가 발생할 가능성이 있는 코드를 실행
+        - 예외가 발생되지 않으면 except 없이 실행 종료
+        - except 문
+        - 예외가 발생하면 except 절이 실행
+        - 예외 상황을 처리하는 코드를 받아서 적절한 조치
+        
+        ```python
+        try :
+        	num = input('숫자 입력 :')
+        	print(int(num))
+        except ValueError :
+        	print('숫자가 입력되지 않았습니다.')
+        ```
+        
+        - as 키워드를 활용하여 원본 에러 메세지를 사용 가능
+        
+        ```python
+        except IndexError as err :
+        	print(err)
+        ```
