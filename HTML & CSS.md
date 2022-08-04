@@ -226,7 +226,7 @@ Cascading Style Sheets
         - 중요도 (Importance) : 사용시 주의
         **- !important**
         - 우선 순위 (Specificity)
-        - 인라인 > id > class, 속성, psuedo-class > 요소, pseudo-element
+        - **인라인 > id > class, 속성, psuedo-class > 요소, pseudo-element**
         - CSS 파일 로딩 순서
     - CSS 상속 : **MDN에서 확인**
         - 상속을 통해 부모 요소의 속성을 자식에게 상속함
@@ -359,3 +359,134 @@ Cascading Style Sheets
         - absolute : 특정 부모의 위치
         - fixed : 화면의 위치
         - sticky : 기본적으로 static이나 스크롤 이동에 따라 fixed로 변경
+    - Float
+        - 박스를 왼쪽 혹은 오른쪽으로 이동시켜 텍스트를 포함 인라인 요소들이 주변을 wrapping 하도록 함
+        - 요소가 Normal Flow를 벗어나도록 함
+        
+        ```css
+        /* 부모에게 적용시켜 1개만 float 처리 */
+        .clearfix::after {
+        	content: ""l
+        	display: block;
+        	clear: both;
+        }
+        ```
+        
+    - Flexbox
+        - 행과 열 형태로 아이템들을 배치하는 1차원 레이아웃 모델
+        - 축
+        - main axis (메인 축, 꼬치)
+        - cross axis (교차 축, 꼬치 먹을 땐 옆으로)
+        - 구성 요소
+        - Flex Container (부모 요소)
+        - Flex Item (자식 요소)
+        - 메인 축 방향, 쌓이는 방향 설정
+        
+        ```css
+        flex-direction : row; /* 왼쪽으로 쌓임 */
+        flex-direction : row-reverse; /* 오른쪽으로 쌓임 */
+        flex-direction : column; /* 위로 쌓임 */
+        flex-direction : column-reverse; /* 아래로 쌓임 */ 
+        ```
+        
+        - 수직 정렬 및 아이템의 너비와 높이 혹은 간격을 동일하게 배치 가능
+        - Flex 속성
+        - 배치 설정 : flex-direction, flex-wrap
+        - 공간 나누기 : justify-content (main aixs), align-content (cross axis)
+        - 정렬 : align-items (모든 아이템을 cross axis 기준으로), align-self (개별 아이템)
+        - flex-direction
+        - Main axis 기준 방향 설정
+        - 역방향의 경우 HTML 태그 선언 순서와 시각적으로 다르니 유의
+        - flex-wrap
+        - 아이템이 컨테이너를 벗어나는 경우 해당 영역 내에 배치되도록 설정
+        - nowrap (기본값) : 한 줄에 배치
+        - wrap : 넘치면 다음 줄로 배치
+        - flew-flow
+        - direction과 wrap의 shorthand
+        - direction과 warp에 대한 설정 값을 차례로 작성
+        - ex) `flex-flow: row nowrap;`
+        - justify-content : main axis를 기준으로 공간 배분
+        - flex-start : [1 2 3    ]
+        - flex-end : [    1 2 3]
+        - center : [  1 2 3  ]
+        - space-between : [1   2   3]
+        - space-around : [ 1 | 2 | 3 ]
+        - space-evenly : [ 1 2 3 ]
+        - align-content : cross axis를 기준으로 공간 배분(아이템이 한 줄로 배치되는 경우 확인 X)
+        - flex-start : 위쪽 정렬
+        - flex-end : 아래쪽 정렬
+        - center : 가운데 정렬
+        - space-between : 양 끝으로 정렬
+        - space-around : 각 margin이 균일하게
+        - space-evenly : 각 간격이 동일하게
+        - align-items : 모든 아이템을 cross axis를 기준으로 정렬
+        - strecth : height를 cross axis 만큼 늘림
+        - flex-start, flex-end, center : cross axis 기준 맨 위, 맨 아래, 중앙에 위치
+        - baseline : 아래 선 기준으로 맞춤 (0oO)
+        - align-self : 개별 아이템(컨테이너 X)을 cross axis 기준으로 정렬
+        - flew-glow : 남은 영역을 아이템에 분배
+        - order : 배치 순서
+        
+- Bootstrap
+    - Bootstrap 기본 원리
+    - Spacing (공식문서 > Utilities > Spacing) : Margin and Padding
+        - {property}{sides}-{size} : mt-3 == margin-top 3
+        - sides
+        - t : top
+        - b : bottom
+        - s : start (left in LTR, right in RTL)
+        - e : end(right in LTR, left in RTL)
+        - x : 양 옆(left and right)
+        - y : 위아래(top and bottom)
+        - blank : 4방면
+        - size
+        - 0 : 0rem (0px)
+        - 1 : 0.25rem (4px)
+        - 2 : 0.5rem (8px)
+        - 3 : 1rem (16px)
+        - 4 : 1.5rem (24px)
+        - 5 : 3rem (48px)
+        - auto : 중앙 정렬
+    - Color
+        - 저장된 색깔을 변수처럼 사용
+    - Text
+        - text-strat, center, end : 텍스트 정렬
+        - text-decoration-non : underline 등 제거
+        - text-dark : 색칠놀이 가능
+        - fw-bold, normal, light : 두께 조절 가능
+        - fst-italic : 기울임꼴 가능
+    - Position
+        - static
+        - relative
+        - absolute : 부모가 static이 아니어야 함(브라우저 기준으로 이동)
+        `class=”position-absoulute top-50 start 50 translate-middle”`
+        - fixed
+        - sticky
+    - Display
+        - .d-{value} for xs
+        - .d-{breakpoint}-{value} for  sm, md, lg, xl, xxl
+        - breakpoint : 화면 크기에 따라 조건문 설정 (반응형 조절, grid system)
+    - Components
+        - Bootstrap의 다양한 UI 요소 활용
+        - 공식 문서 > Components > 원하는 탭 or 검색
+        - 기본 제공된 components 변환 가능
+        - Button : 클릭클릭
+        - Dropdown : 리스트 선택
+        - Form : 입력 폼
+        - Color Picker : 색상 추출
+        - Navbar : 상단의 메뉴 모음 바
+        - Carousel : 슬라이드 넘어가게 만듦
+        - Modal : 클릭하면 팝업처럼 나옴 (페이지 이동 시 사라짐)
+        - Flexbox
+        - Card
+        > Grid card : 화면이 작아지면 한 줄에 표시되는 카드의 개수가 줄어듬(반응형)
+    - Grid System (Web Design)
+        - 요소들의 디자인과 배치에 도움
+        - 기본 요소
+        - Column : 실제 컨텐츠를 포함하는 부분
+        - Gutter : 칼럼과 칼럼 사이의 공간 (사이 간격)
+        - Container : Column들을 담고 있는 공간
+        - 12개의 column !
+        - 6개의 grid breakpoint !! (크기에 따라 다르게 반응)
+        - nesting : column 안에 column 가능
+        - offset : column 단위만큼 비우고 싶을 때 사용
